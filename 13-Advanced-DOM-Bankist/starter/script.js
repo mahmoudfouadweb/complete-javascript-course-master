@@ -24,6 +24,7 @@ btnsOpenModal.forEach(btn => {
 });
 
 btnCloseModal.addEventListener('click', closeModal);
+// instead
 // for (let i = 0; i < btnsOpenModal.length; i++)
 //   btnsOpenModal[i].addEventListener('click', openModal);
 
@@ -34,5 +35,6 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
-console.log();
-console.log();
+
+const message = document.createElement('div');
+message.innerHTML = `we use cookies for improved funcunality and analytics. <button class='btn btn--close-cookie'>Got it!</button>`;
