@@ -86,12 +86,15 @@ const section1 = document.querySelector('#section--1');
 
 btnScrollTo.addEventListener('click', function (e) {
   const s1coords = section1.getBoundingClientRect();
-  // console.log(s1coords);
-  console.log(e.target.getBoundingClientRect());
+  console.log(s1coords);
+  // console.log(e.target.getBoundingClientRect());
   console.log('current scroll (x,y)', window.pageXOffset, window.pageYOffset);
   console.log(
     'height/width view port',
     document.documentElement.clientHeight,
     document.documentElement.clientWidth
   );
+  window.scrollTo(s1coords);
+  // s1coords relevant to view port not the very top of the document
+  console.log('left top', s1coords.left, s1coords.top);
 });
