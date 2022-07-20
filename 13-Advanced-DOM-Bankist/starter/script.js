@@ -40,8 +40,8 @@ const header = document.querySelector('.header');
 const message = document.createElement('div');
 message.classList.add('cookie-message');
 // create content
-// message.textContent = `we use cookies for improved funcunality and analytics. <button class='btn btn--close-cookie`
-message.innerHTML = `we use cookies for improved funcunality and analytics. <button class='btn btn--close-cookie'>Got it!</button>`;
+// message.textContent = `we use cookies for improved functionality and analytics. <button class='btn btn--close-cookie`
+message.innerHTML = `we use cookies for improved functionality and analytics. <button class='btn btn--close-cookie'>Got it!</button>`;
 // header.append(message);
 // header.prepend(message);
 // header.before(message);
@@ -65,3 +65,18 @@ document.documentElement.style.setProperty('--color-primary', 'orangered');
 const logo = document.querySelector('.nav__logo');
 console.log(logo.src);
 console.log(logo.alt);
+
+// non-standard
+console.log(logo.designer);
+console.log(logo.getAttribute('designer'));
+console.log(logo.setAttribute('company', 'mine'));
+console.log(logo.getAttribute('src'));
+
+// data-attribute
+console.log(logo.dataset.versionNumber);
+
+// classes
+logo.classList.add();
+logo.classList.remove();
+logo.classList.toggle();
+logo.classList.contains();
