@@ -44,3 +44,6 @@ message.innerHTML = `we use cookies for improved funcunality and analytics. <but
 // header.before(message);
 // header.after(message);
 header.insertAdjacentElement('beforeend', message);
+document.querySelector('.btn--close-cookie').addEventListener('click', () => {
+  message.remove();
+});
