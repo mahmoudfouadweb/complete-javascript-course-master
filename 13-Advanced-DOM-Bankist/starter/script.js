@@ -41,16 +41,16 @@ const message = document.createElement('div');
 message.classList.add('cookie-message');
 // create content
 // message.textContent = `we use cookies for improved functionality and analytics. <button class='btn btn--close-cookie`
-message.innerHTML = `we use cookies for improved functionality and analytics. <button class='btn btn--close-cookie'>Got it!</button>`;
+// message.innerHTML = `we use cookies for improved functionality and analytics. <button class='btn btn--close-cookie'>Got it!</button>`;
 // header.append(message);
 // header.prepend(message);
 // header.before(message);
 // header.after(message);
-header.insertAdjacentElement('beforeend', message);
+// header.insertAdjacentElement('beforeend', message);
 // delete element
-document.querySelector('.btn--close-cookie').addEventListener('click', () => {
-  message.remove();
-});
+// document.querySelector('.btn--close-cookie').addEventListener('click', () => {
+// message.remove();
+// });
 
 // styles (inline style)
 // message.style.backgroundColor = '#37383d';
@@ -82,3 +82,11 @@ console.log(logo.dataset.versionNumber);
 
 // scroll
 const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+btnScrollTo.addEventListener('click', function (e) {
+  const s1coords = section1.getBoundingClientRect();
+  console.log(s1coords);
+  // console.log(e.target.getBoundingClientRect());
+  console.log('current scroll (x,y)');
+});
