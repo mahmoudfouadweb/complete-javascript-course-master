@@ -53,12 +53,11 @@ document.querySelector('.btn--close-cookie').addEventListener('click', () => {
 });
 
 // styles (inline style)
-message.style.backgroundColor = '#37383d';
-message.style.width = '120%';
-message.style.height =
-  Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
-
-document.documentElement.style.setProperty('--color-primary', 'orangered');
+// message.style.backgroundColor = '#37383d';
+// message.style.width = '120%';
+// message.style.height =
+// Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
+// document.documentElement.style.setProperty('--color-primary', 'orangered');
 
 // Attributes
 
@@ -76,7 +75,10 @@ console.log(logo.getAttribute('src'));
 console.log(logo.dataset.versionNumber);
 
 // classes
-logo.classList.add();
-logo.classList.remove();
-logo.classList.toggle();
-logo.classList.contains();
+// logo.classList.add();
+// logo.classList.remove();
+// logo.classList.toggle();
+// logo.classList.contains();
+
+// scroll
+const btnScrollTo = document.querySelector('.btn--scroll-to');
