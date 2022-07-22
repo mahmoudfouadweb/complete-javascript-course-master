@@ -1,6 +1,6 @@
 'use strict';
 
-///////////////////////////////////////
+///////////////////////////////////////////////////
 // Modal window
 
 const modal = document.querySelector('.modal');
@@ -36,10 +36,14 @@ document.addEventListener('keydown', function (e) {
   }
 });
 const header = document.querySelector('.header');
+
 // create element
 const message = document.createElement('div');
 message.classList.add('cookie-message');
+///////////////////////////////////////////////////
+
 // create content
+
 // message.textContent = `we use cookies for improved functionality and analytics. <button class='btn btn--close-cookie`
 // message.innerHTML = `we use cookies for improved functionality and analytics. <button class='btn btn--close-cookie'>Got it!</button>`;
 // header.append(message);
@@ -61,18 +65,18 @@ message.classList.add('cookie-message');
 
 // Attributes
 
-const logo = document.querySelector('.nav__logo');
-console.log(logo.src);
-console.log(logo.alt);
+// const logo = document.querySelector('.nav__logo');
+// console.log(logo.src);
+// console.log(logo.alt);
 
-// non-standard
-console.log(logo.designer);
-console.log(logo.getAttribute('designer'));
-console.log(logo.setAttribute('company', 'mine'));
-console.log(logo.getAttribute('src'));
+// // non-standard
+// console.log(logo.designer);
+// console.log(logo.getAttribute('designer'));
+// console.log(logo.setAttribute('company', 'mine'));
+// console.log(logo.getAttribute('src'));
 
-// data-attribute
-console.log(logo.dataset.versionNumber);
+// // data-attribute
+// console.log(logo.dataset.versionNumber);
 
 // classes
 // logo.classList.add();
@@ -80,21 +84,62 @@ console.log(logo.dataset.versionNumber);
 // logo.classList.toggle();
 // logo.classList.contains();
 
+///////////////////////////////////////////////////
+
 // scroll
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1');
 
 btnScrollTo.addEventListener('click', function (e) {
   const s1coords = section1.getBoundingClientRect();
-  console.log(s1coords);
+  const xcoords = document
+    .querySelector('.operations__tab--1')
+    .getBoundingClientRect();
+  console.log(xcoords);
+  console.log('scroll x/y', window.pageXOffset, window.pageYOffset);
+  window.scrollTo({
+    left: xcoords.left + window.pageXOffset,
+    top: xcoords.top + window.pageYOffset,
+    behavior: 'smooth',
+  });
+  // scrollTo(xcoords.left + window.pageXOffset, xcoords.top + window.pageYOffset);
+  // console.log(s1coords);
   // console.log(e.target.getBoundingClientRect());
-  console.log('current scroll (x,y)', window.pageXOffset, window.pageYOffset);
-  console.log(
-    'height/width view port',
-    document.documentElement.clientHeight,
-    document.documentElement.clientWidth
-  );
-  window.scrollTo(s1coords);
+  // console.log('current scroll (x,y)', window.pageXOffset, window.pageYOffset);
+  // console.log(
+  //   'height/width view port',
+  //   document.documentElement.clientHeight,
+  //   document.documentElement.clientWidth
+  // );
+  // window.scrollTo(
+  //   s1coords.left + window.pageXOffset,
+  //   s1coords.top + window.pageYOffset
+  // );
   // s1coords relevant to view port not the very top of the document
-  console.log('left top', s1coords.left, s1coords.top);
+  // console.log('left top', s1coords.left, s1coords.top);
 });
+
+///////////////////////////////////////////////////
+// EventListener
+
+// const randomInd = (min, max) =>
+//   Math.floor(Math.random() * (max - min + 1) + min);
+
+// const randomColor = () =>
+//   `rgb(${randomInd(0, 255)},${randomInd(0, 255)},${randomInd(0, 255)})`;
+
+// document.querySelector('.nav').addEventListener('click', function (e) {
+//   console.log('nav');
+//   this.style.backgroundColor = randomColor();
+// });
+
+// document.querySelector('.nav__links').addEventListener('click', function (e) {
+//   console.log('nav');
+//   this.style.backgroundColor = randomColor();
+// });
+
+// document.querySelector('.nav__link').addEventListener('click', function (e) {
+//   e.preventDefault();
+//   console.log('nav');
+//   this.style.backgroundColor = randomColor();
+// });
