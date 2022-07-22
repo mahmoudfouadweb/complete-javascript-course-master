@@ -41,7 +41,44 @@ const header = document.querySelector('.header');
 const message = document.createElement('div');
 message.classList.add('cookie-message');
 ///////////////////////////////////////////////////
+//scroll
+// document.querySelectorAll('.nav__link').forEach(function (el) {
+//   el.addEventListener('click', function (e) {
+//     e.preventDefault();
+//     const id = e.target.getAttribute('href');
+//     console.log(id);
+//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+//   });
+// });
 
+// Event Delegation
+//1. add event listener to common parent element
+//2. determine what element originated the event
+
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  // Matching Strategy
+  if (e.target.classList.contains('nav__link')) {
+    e.preventDefault();
+    const id = e.target.getAttribute('href');
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  }
+});
+
+// DOM Traversing
+const h1 = document.querySelector('h1');
+
+// Going Downward: Child
+console.log(h1.querySelector('.highlight'));
+console.log(h1.childNodes);
+console.log(h1.children);
+h1.firstElementChild.style.color = 'white';
+h1.lastElementChild.style.color = 'orangered';
+
+// Going Upward: Parent
+console.log(h1.parentNode);
+console.log(h1.parentElement);
+
+///////////////////////////////////////////////////
 // create content
 
 // message.textContent = `we use cookies for improved functionality and analytics. <button class='btn btn--close-cookie`
