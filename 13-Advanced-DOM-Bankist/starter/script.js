@@ -10,8 +10,18 @@ const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 const tabContainer = document.querySelector('.operations__tab-container');
 
 tabContainer.addEventListener('click', e => {
-  const clicked = e.target.getAttribute('date-tab');
+  const clicked = e.target.closest('.operations__tab');
   console.log(clicked);
+
+  // Guard Clause
+  if (!clicked) return;
+
+  // Active Tab
+  [...tabContainer.children].forEach(t =>
+    t.classList.remove('operations__tab--active')
+  );
+
+  clicked.classList.add('operations__tab--active');
 });
 const openModal = function (e) {
   e.preventDefault();
