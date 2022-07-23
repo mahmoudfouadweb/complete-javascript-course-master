@@ -7,7 +7,12 @@ const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+const tabContainer = document.querySelector('.operations__tab-container');
 
+tabContainer.addEventListener('click', e => {
+  const clicked = e.target.getAttribute('date-tab');
+  console.log(clicked);
+});
 const openModal = function (e) {
   e.preventDefault();
   modal.classList.remove('hidden');
@@ -80,6 +85,18 @@ console.log(h1.parentElement);
 h1.closest('.header').style.background = 'var(--gradient-secondary)';
 h1.closest('h1').style.background = 'var(--gradient-primary)';
 
+// Going Sideways: Sibling
+console.log(h1.previousElementSibling);
+console.log(h1.nextElementSibling);
+
+console.log(h1.previousSibling);
+console.log(h1.nextSibling);
+
+console.log(h1.parentElement.children);
+// just for fun and  practice
+// [...h1.parentElement.children].forEach(function (el) {
+//   if (el !== h1) el.style.transform = 'scale(0.25)';
+// });
 ///////////////////////////////////////////////////
 // create content
 
