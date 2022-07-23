@@ -16,12 +16,14 @@ tabContainer.addEventListener('click', e => {
   // Guard Clause
   if (!clicked) return;
 
-  // Active Tab
+  // Active Tab, clean active class
   [...tabContainer.children].forEach(t =>
     t.classList.remove('operations__tab--active')
   );
-
+  // add active class
   clicked.classList.add('operations__tab--active');
+
+  document.querySelector('');
 });
 const openModal = function (e) {
   e.preventDefault();
