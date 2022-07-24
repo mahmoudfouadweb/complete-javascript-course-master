@@ -24,9 +24,10 @@ nav.addEventListener('mouseover', e => {
     const sibling = link.closest('.nav').querySelectorAll('.nav__link');
     const logo = link.closest('.nav').querySelector('img');
 
-    sibling.forEach(el => (el.style.opacity = 0.5));
+    sibling.forEach(el => {
+      if (el !== link) el.style.opacity = 0.5;
+    });
     logo.style.opacity = 0.5;
-    link.style.opacity = 1;
   }
 });
 
