@@ -16,7 +16,7 @@ const header = document.querySelector('.header');
 // tap toggle
 tabContainer.addEventListener('click', e => {
   const clicked = e.target.closest('.operations__tab');
-  // console.log(clicked);
+  console.log('tap clicked');
 
   // Guard Clause
   if (!clicked) return;
@@ -32,11 +32,15 @@ tabContainer.addEventListener('click', e => {
     `.operations__tab--${clicked.getAttribute('data-tab')}`
   );
 });
-
+const operation = document.querySelector('.operations');
 tabContainer.addEventListener('click', function (e) {
   // const tabContent = tabsContainer.querySelector(`operations__content--${}`);
   const clicked = e.target;
-  console.log(clicked);
+  console.log(
+    clicked
+      .closest('.operations')
+      .querySelector(`.operations__content--${clicked.closest(operation)}`)
+  );
 });
 
 ///////////////////////////////////////////////////
@@ -92,9 +96,10 @@ document.addEventListener('keydown', function (e) {
 //2. determine what element originated the event
 
 document.querySelector('.nav__links').addEventListener('click', function (e) {
+  e.preventDefault();
+
   // Matching Strategy
   if (e.target.classList.contains('nav__link')) {
-    e.preventDefault();
     const id = e.target.getAttribute('href');
     // Guard Clause
     if (id === '#') return;
@@ -176,34 +181,34 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 
 // scroll
 
-btnScrollTo.addEventListener('click', function (e) {
-  const s1coords = section1.getBoundingClientRect();
-  const xcoords = document
-    .querySelector('.operations__tab--1')
-    .getBoundingClientRect();
-  console.log(xcoords);
-  console.log('scroll x/y', window.pageXOffset, window.pageYOffset);
-  window.scrollTo({
-    left: xcoords.left + window.pageXOffset,
-    top: xcoords.top + window.pageYOffset,
-    behavior: 'smooth',
-  });
-  // scrollTo(xcoords.left + window.pageXOffset, xcoords.top + window.pageYOffset);
-  // console.log(s1coords);
-  // console.log(e.target.getBoundingClientRect());
-  // console.log('current scroll (x,y)', window.pageXOffset, window.pageYOffset);
-  // console.log(
-  //   'height/width view port',
-  //   document.documentElement.clientHeight,
-  //   document.documentElement.clientWidth
-  // );
-  // window.scrollTo(
-  //   s1coords.left + window.pageXOffset,
-  //   s1coords.top + window.pageYOffset
-  // );
-  // s1coords relevant to view port not the very top of the document
-  // console.log('left top', s1coords.left, s1coords.top);
-});
+// btnScrollTo.addEventListener('click', function (e) {
+//   const s1coords = section1.getBoundingClientRect();
+//   const xcoords = document
+//     .querySelector('.operations__tab--1')
+//     .getBoundingClientRect();
+//   console.log(xcoords);
+//   console.log('scroll x/y', window.pageXOffset, window.pageYOffset);
+//   window.scrollTo({
+//     left: xcoords.left + window.pageXOffset,
+//     top: xcoords.top + window.pageYOffset,
+//     behavior: 'smooth',
+//   });
+// scrollTo(xcoords.left + window.pageXOffset, xcoords.top + window.pageYOffset);
+// console.log(s1coords);
+// console.log(e.target.getBoundingClientRect());
+// console.log('current scroll (x,y)', window.pageXOffset, window.pageYOffset);
+// console.log(
+//   'height/width view port',
+//   document.documentElement.clientHeight,
+//   document.documentElement.clientWidth
+// );
+// window.scrollTo(
+//   s1coords.left + window.pageXOffset,
+//   s1coords.top + window.pageYOffset
+// );
+// s1coords relevant to view port not the very top of the document
+// console.log('left top', s1coords.left, s1coords.top);
+// });
 
 ///////////////////////////////////////////////////
 // EventListener (Example)
