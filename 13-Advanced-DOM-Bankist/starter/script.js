@@ -10,7 +10,9 @@ const tabContainer = document.querySelector('.operations__tab-container');
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1');
 const h1 = document.querySelector('h1');
+const header = document.querySelector('.header');
 
+///////////////////////////////////////////////////
 // tap toggle
 tabContainer.addEventListener('click', e => {
   const clicked = e.target.closest('.operations__tab');
@@ -31,6 +33,7 @@ tabContainer.addEventListener('click', e => {
   );
 });
 
+///////////////////////////////////////////////////
 // Modal window
 
 // open modal
@@ -63,11 +66,10 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
-const header = document.querySelector('.header');
 
 // create element
-const message = document.createElement('div');
-message.classList.add('cookie-message');
+// const message = document.createElement('div');
+// message.classList.add('cookie-message');
 ///////////////////////////////////////////////////
 //scroll
 // document.querySelectorAll('.nav__link').forEach(function (el) {
@@ -88,6 +90,8 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
   if (e.target.classList.contains('nav__link')) {
     e.preventDefault();
     const id = e.target.getAttribute('href');
+    // Guard Clause
+    if (id === '#') return;
     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
   }
 });
@@ -95,26 +99,26 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 // DOM Traversing
 
 // Going Downward: Child
-console.log(h1.querySelector('.highlight'));
-console.log(h1.childNodes);
-console.log(h1.children);
+// console.log(h1.querySelector('.highlight'));
+// console.log(h1.childNodes);
+// console.log(h1.children);
 // h1.firstElementChild.style.color = 'white';
 // h1.lastElementChild.style.color = 'orangered';
 
 // Going Upward: Parent
-console.log(h1.parentNode);
-console.log(h1.parentElement);
+// console.log(h1.parentNode);
+// console.log(h1.parentElement);
 // h1.closest('.header').style.background = 'var(--gradient-secondary)';
 // h1.closest('h1').style.background = 'var(--gradient-primary)';
 
 // Going Sideways: Sibling
-console.log(h1.previousElementSibling);
-console.log(h1.nextElementSibling);
+// console.log(h1.previousElementSibling);
+// console.log(h1.nextElementSibling);
 
-console.log(h1.previousSibling);
-console.log(h1.nextSibling);
+// console.log(h1.previousSibling);
+// console.log(h1.nextSibling);
 
-console.log(h1.parentElement.children);
+// console.log(h1.parentElement.children);
 // just for fun and  practice
 // [...h1.parentElement.children].forEach(function (el) {
 //   if (el !== h1) el.style.transform = 'scale(0.25)';
@@ -196,7 +200,7 @@ btnScrollTo.addEventListener('click', function (e) {
 });
 
 ///////////////////////////////////////////////////
-// EventListener
+// EventListener (Example)
 
 // const randomInd = (min, max) =>
 //   Math.floor(Math.random() * (max - min + 1) + min);
