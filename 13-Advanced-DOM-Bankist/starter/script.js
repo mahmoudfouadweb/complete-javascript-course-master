@@ -16,7 +16,7 @@ const header = document.querySelector('.header');
 // tap toggle
 tabContainer.addEventListener('click', e => {
   const clicked = e.target.closest('.operations__tab');
-  console.log(clicked);
+  // console.log(clicked);
 
   // Guard Clause
   if (!clicked) return;
@@ -31,6 +31,12 @@ tabContainer.addEventListener('click', e => {
   document.querySelector(
     `.operations__tab--${clicked.getAttribute('data-tab')}`
   );
+});
+
+tabContainer.addEventListener('click', function (e) {
+  // const tabContent = tabsContainer.querySelector(`operations__content--${}`);
+  const clicked = e.target;
+  console.log(clicked);
 });
 
 ///////////////////////////////////////////////////
