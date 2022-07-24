@@ -1,14 +1,17 @@
 'use strict';
 
 ///////////////////////////////////////////////////
-// Modal window
-
+// DOM variables
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 const tabContainer = document.querySelector('.operations__tab-container');
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+const h1 = document.querySelector('h1');
 
+// tap toggle
 tabContainer.addEventListener('click', e => {
   const clicked = e.target.closest('.operations__tab');
   console.log(clicked);
@@ -23,13 +26,21 @@ tabContainer.addEventListener('click', e => {
   // add active class
   clicked.classList.add('operations__tab--active');
 
-  document.querySelector('');
+  document.querySelector(
+    `.operations__tab--${clicked.getAttribute('data-tab')}`
+  );
 });
+
+// Modal window
+
+// open modal
 const openModal = function (e) {
   e.preventDefault();
   modal.classList.remove('hidden');
   overlay.classList.remove('hidden');
 };
+
+// close modal
 
 const closeModal = function () {
   modal.classList.add('hidden');
@@ -82,20 +93,19 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 });
 
 // DOM Traversing
-const h1 = document.querySelector('h1');
 
 // Going Downward: Child
 console.log(h1.querySelector('.highlight'));
 console.log(h1.childNodes);
 console.log(h1.children);
-h1.firstElementChild.style.color = 'white';
-h1.lastElementChild.style.color = 'orangered';
+// h1.firstElementChild.style.color = 'white';
+// h1.lastElementChild.style.color = 'orangered';
 
 // Going Upward: Parent
 console.log(h1.parentNode);
 console.log(h1.parentElement);
-h1.closest('.header').style.background = 'var(--gradient-secondary)';
-h1.closest('h1').style.background = 'var(--gradient-primary)';
+// h1.closest('.header').style.background = 'var(--gradient-secondary)';
+// h1.closest('h1').style.background = 'var(--gradient-primary)';
 
 // Going Sideways: Sibling
 console.log(h1.previousElementSibling);
@@ -155,8 +165,6 @@ console.log(h1.parentElement.children);
 ///////////////////////////////////////////////////
 
 // scroll
-const btnScrollTo = document.querySelector('.btn--scroll-to');
-const section1 = document.querySelector('#section--1');
 
 btnScrollTo.addEventListener('click', function (e) {
   const s1coords = section1.getBoundingClientRect();
