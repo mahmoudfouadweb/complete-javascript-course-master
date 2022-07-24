@@ -6,41 +6,66 @@ const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
-const tabContainer = document.querySelector('.operations__tab-container');
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1');
 const h1 = document.querySelector('h1');
 const header = document.querySelector('.header');
+const operation = document.querySelector('.operations');
+const tabContainer = document.querySelector('.operations__tab-container');
+const tabs = document.querySelectorAll('.operations__tab ');
+const tabsContent = document.querySelectorAll('.operations__content ');
+const nav = document.querySelector('.nav');
 
 ///////////////////////////////////////////////////
+// Fade Nave Bar
+nav.addEventListener('mouseover', e => {
+ if(e.target.contains(''))
+});
+
+nav.addEventListener('mouseout', e => {
+
+});
+//
+///////////////////////////////////////////////////
+///////////////////////////////////////////////////
+///////////////////////////////////////////////////
+///////////////////////////////////////////////////
+///////////////////////////////////////////////////
+///////////////////////////////////////////////////
 // tap toggle
+
+// BAD Practice
+// tabs.forEach(function (t) {
+//   t.addEventListener('click', e => {
+//     console.log('TAP');
+//   });
+// });
+
+// Event Delegation (Best Practice)
+
 tabContainer.addEventListener('click', e => {
   const clicked = e.target.closest('.operations__tab');
-  console.log('tap clicked');
+  const tabContainer = document.querySelector('.operations__tab-container');
+  console.log('Tap DELEGATION', clicked);
 
+  // active button mode-off
+  tabs.forEach(t => t.classList.remove('operations__tab--active'));
   // Guard Clause
   if (!clicked) return;
+  // hide content
+  tabsContent.forEach(c => c.classList.remove('operations__content--active'));
 
-  // Active Tab, clean active class
-  [...tabContainer.children].forEach(t =>
-    t.classList.remove('operations__tab--active')
-  );
-  // add active class
+  // active button mode-on
   clicked.classList.add('operations__tab--active');
 
-  document.querySelector(
-    `.operations__tab--${clicked.getAttribute('data-tab')}`
-  );
-});
-const operation = document.querySelector('.operations');
-tabContainer.addEventListener('click', function (e) {
-  // const tabContent = tabsContainer.querySelector(`operations__content--${}`);
-  const clicked = e.target;
-  console.log(
-    clicked
-      .closest('.operations')
-      .querySelector(`.operations__content--${clicked.closest(operation)}`)
-  );
+  // activate content area
+  // show content
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add('operations__content--active');
+
+  //click Sound
+  const clickSound = new Audio('./click.wav').play();
 });
 
 ///////////////////////////////////////////////////
@@ -77,6 +102,21 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
+///////////////////////////////////////////////////
+// Scroll Sections
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  e.preventDefault();
+
+  // Matching Strategy
+  if (e.target.classList.contains('nav__link')) {
+    const id = e.target.getAttribute('href');
+
+    // Guard Clause
+    if (id === '#') return;
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  }
+});
+
 // create element
 // const message = document.createElement('div');
 // message.classList.add('cookie-message');
@@ -95,17 +135,18 @@ document.addEventListener('keydown', function (e) {
 //1. add event listener to common parent element
 //2. determine what element originated the event
 
-document.querySelector('.nav__links').addEventListener('click', function (e) {
-  e.preventDefault();
+// document.querySelector('.nav__links').addEventListener('click', function (e) {
+//   e.preventDefault();
 
-  // Matching Strategy
-  if (e.target.classList.contains('nav__link')) {
-    const id = e.target.getAttribute('href');
-    // Guard Clause
-    if (id === '#') return;
-    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
-  }
-});
+//   // Matching Strategy
+//   if (e.target.classList.contains('nav__link')) {
+//     const id = e.target.getAttribute('href');
+
+//     // Guard Clause
+//     if (id === '#') return;
+//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+//   }
+// });
 
 // DOM Traversing
 
