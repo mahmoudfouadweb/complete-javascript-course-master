@@ -19,27 +19,11 @@ const nav = document.querySelector('.nav');
 ///////////////////////////////////////////////////
 // Fade Nave Bar
 nav.addEventListener('mouseover', e => {
-  if (e.target.classList.contains('nav__link')) {
-    const link = e.target;
-    const sibling = link.closest('.nav').querySelectorAll('.nav__link');
-    const logo = link.closest('.nav').querySelector('img');
-
-    sibling.forEach(el => {
-      if (el !== link) el.style.opacity = 0.5;
-    });
-    logo.style.opacity = 0.5;
-  }
+  mouseOver(e, 0.5);
 });
 
 nav.addEventListener('mouseout', e => {
-  if (e.target.classList.contains('nav__link')) {
-    const link = e.target;
-    const sibling = link.closest('.nav').querySelectorAll('.nav__link');
-    const logo = link.closest('.nav').querySelector('img');
-
-    sibling.forEach(el => (el.style.opacity = 1));
-    logo.style.opacity = 1;
-  }
+  mouseOver(e, 1);
 });
 
 function mouseOver(e, opacity) {
@@ -48,9 +32,10 @@ function mouseOver(e, opacity) {
     const sibling = link.closest('.nav').querySelectorAll('.nav__link');
     const logo = link.closest('.nav').querySelector('img');
 
-    sibling.forEach(el => (el.style.opacity = 0.5));
-    logo.style.opacity = 0.5;
-    link.style.opacity = 1;
+    sibling.forEach(el => {
+      if (el !== link) el.style.opacity = opacity;
+    });
+    logo.style.opacity = opacity;
   }
 }
 
