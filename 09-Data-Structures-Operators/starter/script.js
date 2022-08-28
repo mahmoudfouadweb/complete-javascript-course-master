@@ -156,5 +156,9 @@ average /= Object.values(game.odds).length;
 console.log(Math.trunc(average));
 
 // solution 3
-
+for (const [team, odd] of Object.entries(game.odds)) {
+  // console.log(Object.entries(game.odds));
+  const teamName = team === 'x' ? 'Draw' : `Victory ${game[team]}`;
+  console.log(`Odd of ${teamName} :${odd}`);
+}
 console.log('< =============== Practice =============== >');
