@@ -113,18 +113,32 @@ class PersonCl {
   }
 }
 
+Person.hey = function () {
+  console.log(`hi there 👋`);
+}
+
 const rafal = new PersonCl('Rafal', 2015);
-const yossef = new PersonCl('Yossef',2018)
+const yossef = new PersonCl('Yossef', 2018);
 
 console.log('__________ YOSSEF _______________');
 console.log(yossef);
-yossef.firstName = 'Yossef Mahmoud'
+yossef.firstName = 'Yossef Mahmoud';
 console.log(yossef);
 
 console.log(rafal);
-rafal.firstName = 'Rafal mahmoud';
+rafal.firstName = 'Rafal Mahmoud';
 rafal.calcAge();
 
+
+Person.hey();
+
+console.log(Person.prototype.name);
+
+
+
+// Array.from(document.querySelectorAll('h1')).forEach(
+//   h => (h.textContent = `${rafal._firstName} ${yossef._firstName}`)
+//   );
 console.log(rafal.firstName);
 
 console.log(rafal.__proto__ === PersonCl.prototype);
