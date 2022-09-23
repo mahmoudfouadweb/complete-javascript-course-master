@@ -5,12 +5,14 @@ const Car = function (make, speed) {
   this.speed = speed;
 };
 
-Car.prototype.accelerate = function (up) {
-  console.log((this.speed += up));
+Car.prototype.accelerate = function () {
+  const increase = (this.speed += 20);
+  console.log(increase);
+  return increase;
 };
 
-Car.prototype.brake = function (down) {
-  console.log((this.speed -= down));
+Car.prototype.brake = function () {
+  console.log((this.speed -= 5));
 };
 
 console.log(Car.prototype);
@@ -19,13 +21,14 @@ const bmw = new Car('BMW', 120);
 const mercedes = new Car('Mercedes', 95);
 
 console.log('--------- BMW Challenge 1 -----------');
-bmw.accelerate(10);
-bmw.brake(5);
+// bmw.accelerate(10);
+// bmw.brake(5);
 
 console.log('------ Mercedes ---------');
 
-mercedes.accelerate(10);
-mercedes.brake(5);
+// mercedes.accelerate(10);
+// mercedes.brake(5);
+
 
 //  Challenge two
 
@@ -71,3 +74,32 @@ console.log('--------//-----------');
 
 // Challenge Three
 
+const EV = function (make, speed, charge) {
+  Car.call(this, make, speed);
+  this.charge = charge;
+};
+
+EV.prototype = Object.create(Car.prototype);
+
+EV.prototype.chargeBattery = function (chargeTo) {
+  return (this.charge = chargeTo);
+};
+
+EV.prototype.accelerate = function () {
+  this.speed += 20;
+  this.charge --;
+  console.log(
+    `${this.make} going at ${this.speed} km/h, with a charge of ${this.charge}%`
+  );
+};
+console.log('------ Tesla ---------');
+// Tesla
+const tesla = new EV('Tesla', 120, 23);
+
+console.log(tesla);
+
+// Methods
+// tesla.chargeBattery();
+tesla.accelerate();
+tesla.brake()
+tesla.chargeBattery(90)

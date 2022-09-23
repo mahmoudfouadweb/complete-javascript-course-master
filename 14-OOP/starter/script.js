@@ -241,8 +241,6 @@
 //   this.boobs = boobs;
 // };
 
-
-
 // const lena = new Lady('big', 'tight');
 // console.log(lena);
 // console.dir(lena.__proto__.constructor);
@@ -262,3 +260,111 @@
 
 // console.log(nadaSteety instanceof Transform);
 // console.log(nadaSteety instanceof Lady);
+
+// class inheritance
+
+class PersonCl {
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
+    this.birthYear = birthYear;
+  }
+  //  method will be added to .prototype property
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
+
+  greatGreet() {
+    console.log(`very welcome ${this.fullName}`);
+  }
+
+  set fullName(name) {
+    if (name.includes(' ')) {
+      this._fullName = name;
+    } else {
+      console.log('Error');
+    }
+  }
+
+  get fullName() {
+    return this._fullName;
+  }
+
+  get age() {
+    return 2030 - this.birthYear;
+  }
+
+  static hey() {
+    console.log(`hey there 👋`);
+    console.log(new this('mas sm', 2000));
+  }
+}
+
+class StudentCl extends PersonCl {
+  constructor(fullName, birthYear, course) {
+    super(fullName, birthYear);
+    this.course = course;
+  }
+
+  introduce() {
+    console.log(`My name is ${this.fullName} and I study ${this.course}`);
+  }
+
+  calcAge() {
+    console.log(2030 - this.birthYear);
+  }
+}
+
+const maha = new StudentCl('maha ahmed', 1991, 'Javascript');
+console.log(maha);
+/////////////////////////////////////////////////////////////////////////
+console.log('********************* +18 *************************');
+
+class LadyCl {
+  constructor(name, boobs, pussy, ass) {
+    this.name = name;
+    this.boobs = boobs;
+    this.pussy = pussy;
+    this.ass = ass;
+  }
+
+  statusPussy(status) {
+    console.log(
+      `My name is ${this.name} I am a horny Pitch have a wet ${this.pussy} pussy i wanna a ${status}`
+    );
+  }
+
+  statusBoobs(status) {
+    console.log(
+      `My name is ${this.name} I am a horny Pitch have a big ${this.boobs} tits i wanna a ${status}`
+    );
+  }
+
+  statusAss(status) {
+    console.log(
+      `My name is ${this.name} Come to fuck me I a horny lady come fuck my ${this.ass} ass now i wanna a ${status}`
+    );
+  }
+}
+
+const mia = new LadyCl('Mia Khalifa', 'rounded', 'tight black', 'big');
+mia.statusPussy('big');
+mia.statusBoobs('big');
+mia.statusAss('big');
+class LadyBoyCl extends LadyCl {
+  constructor(name, boobs, ass, dick, pussy) {
+    super(name, boobs, pussy, ass);
+    this.dick = dick;
+  }
+
+  statusDick(status) {
+    console.log(`i have a ${this.dick} dick i want a ${status} dick inside me`);
+  }
+}
+
+const gaylyne = new LadyBoyCl('gege mtnak', 'flat', 'nice', 'small', 'no');
+console.log(gaylyne);
+
+gaylyne.statusAss('any');
+gaylyne.statusPussy('no need')
+gaylyne.statusBoobs('any')
+gaylyne.statusDick('any')
