@@ -74,8 +74,8 @@ const PersonCon = function (firstName, birthYear) {
   this.birthYear = birthYear;
 };
 
-PersonCon.prototype.calcAge = function () {
-  console.log(`My age is ${2030 - this.birthYear} years`);
+PersonCon.prototype.calcAge = function (from) {
+  console.log(`My age is ${2030 - this.birthYear} years from ${from}`);
 };
 
 const Student = function (firstName, birthYear, course) {
@@ -83,10 +83,16 @@ const Student = function (firstName, birthYear, course) {
   this.course = course;
 };
 
+Student.prototype = Object.create(PersonCon.prototype);
+
 Student.prototype.greeting = function () {
   console.log(`hello i am ${this.firstName} and i study ${this.course}`);
 };
 
 const mody = new Student('Mahmoud', 1991, 'Javascript');
-mody.greeting()
-console.log(mody);
+mody.greeting();
+mody.calcAge('mody');
+
+console.log(mody.__proto__);
+console.log(PersonCon.prototype === Student.prototype);
+console.log(Student.prototype === mody.__proto__);
