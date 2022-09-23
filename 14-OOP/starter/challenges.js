@@ -18,7 +18,7 @@ console.log(Car.prototype);
 const bmw = new Car('BMW', 120);
 const mercedes = new Car('Mercedes', 95);
 
-console.log('--------- BMW -----------');
+console.log('--------- BMW Challenge 1 -----------');
 bmw.accelerate(10);
 bmw.brake(5);
 
@@ -64,35 +64,10 @@ ford.accelerate(10);
 ford.brake(5);
 ford.speedUS = 75;
 
-console.log('--------//-----------');
+console.log('--------// challenge 2 -----------');
 console.log(ford.speed);
 console.log(ford.speedUS);
 console.log('--------//-----------');
 
-const PersonCon = function (firstName, birthYear) {
-  this.firstName = firstName;
-  this.birthYear = birthYear;
-};
+// Challenge Three
 
-PersonCon.prototype.calcAge = function (from) {
-  console.log(`My age is ${2030 - this.birthYear} years from ${from}`);
-};
-
-const Student = function (firstName, birthYear, course) {
-  PersonCon.call(this, firstName, birthYear);
-  this.course = course;
-};
-
-Student.prototype = Object.create(PersonCon.prototype);
-
-Student.prototype.greeting = function () {
-  console.log(`hello i am ${this.firstName} and i study ${this.course}`);
-};
-
-const mody = new Student('Mahmoud', 1991, 'Javascript');
-mody.greeting();
-mody.calcAge('mody');
-
-console.log(mody.__proto__);
-console.log(PersonCon.prototype === Student.prototype);
-console.log(Student.prototype === mody.__proto__);

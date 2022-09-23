@@ -202,3 +202,63 @@
 // rasha.birthYear = 1990;
 // rasha.calcAge()
 // console.log(rasha.__proto__);
+
+///////////////////////////////////////////////////
+
+// const PersonCon = function (firstName, birthYear) {
+//   this.firstName = firstName;
+//   this.birthYear = birthYear;
+// };
+
+// PersonCon.prototype.calcAge = function (from) {
+//   console.log(`My age is ${2030 - this.birthYear} years from ${from}`);
+// };
+
+// const Student = function (firstName, birthYear, course) {
+//   PersonCon.call(this, firstName, birthYear);
+//   this.course = course;
+// };
+
+// Student.prototype = Object.create(PersonCon.prototype);
+
+// Student.prototype.greeting = function () {
+//   console.log(`hello i am ${this.firstName} and i study ${this.course}`);
+// };
+
+// const mody = new Student('Mahmoud', 1991, 'Javascript');
+// mody.greeting();
+// mody.calcAge('mody');
+
+// console.log(mody.__proto__);
+// console.log(PersonCon.prototype === Student.prototype);
+// console.log(Student.prototype === mody.__proto__);
+// console.log(mody.__proto__);
+// console.log(mody.__proto__.__proto__.__proto__.__proto__);
+// console.dir(Student.prototype.constructor);
+
+// const Lady = function (boobs, pussy) {
+//   this.pussy = pussy;
+//   this.boobs = boobs;
+// };
+
+
+
+// const lena = new Lady('big', 'tight');
+// console.log(lena);
+// console.dir(lena.__proto__.constructor);
+
+// const Transform = function (ass, dick, boobs, pussy) {
+//   Lady.call(this, boobs, pussy);
+//   this.ass = ass;
+//   this.dick = dick;
+// };
+
+// Transform.prototype = Object.create(Lady.prototype);
+
+// const nadaSteety = new Transform('soft', 'small', 'nice', 'none');
+// console.log(nadaSteety);
+
+// console.dir(Transform.prototype);
+
+// console.log(nadaSteety instanceof Transform);
+// console.log(nadaSteety instanceof Lady);
