@@ -365,6 +365,67 @@ const gaylyne = new LadyBoyCl('gege mtnak', 'flat', 'nice', 'small', 'no');
 console.log(gaylyne);
 
 gaylyne.statusAss('any');
-gaylyne.statusPussy('no need')
-gaylyne.statusBoobs('any')
-gaylyne.statusDick('any')
+gaylyne.statusPussy('no need');
+gaylyne.statusBoobs('any');
+gaylyne.statusDick('any');
+
+// Account
+console.log(`********************* ACCOUNT ***********************`);
+class Account {
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+
+    // Privacy Data
+    this._pin = pin;
+    this._movement = [];
+    this.local = navigator.language;
+    console.log(`Thanks for opening an account`);
+  }
+
+  get movement() {
+    return this._movement;
+  }
+
+  deposit(val) {
+    return this._movement.push(val);
+  }
+
+  withdraw(val) {
+    return this.deposit(-val);
+  }
+
+  _approveLoan(val) {
+    if (val) {
+      return true;
+    }
+  }
+
+  requestLoan(val) {
+    if (this._approveLoan) {
+      this.deposit(val);
+    } else {
+      console.log(`your request of loan ${val} is rejected`);
+    }
+  }
+
+  totalAccount() {
+    const total = this.movement.reduce((move, acc) => move + acc, 0);
+    console.log(total);
+    return total;
+  }
+}
+
+const acc1 = new Account('Mahmoud', 'EGP', '2121');
+console.log(acc1);
+
+acc1.requestLoan(20000);
+acc1.withdraw(130);
+acc1.deposit(9500);
+acc1.withdraw(60000);
+acc1.requestLoan(120000);
+acc1.totalAccount();
+console.log(acc1.movement);
+
+const acc2 = new Account('Asmaa', 'EGP', '0412');
+console.log(acc2);
