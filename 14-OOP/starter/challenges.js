@@ -29,7 +29,6 @@ console.log('------ Mercedes ---------');
 // mercedes.accelerate(10);
 // mercedes.brake(5);
 
-
 //  Challenge two
 
 class CarCl {
@@ -87,7 +86,7 @@ EV.prototype.chargeBattery = function (chargeTo) {
 
 EV.prototype.accelerate = function () {
   this.speed += 20;
-  this.charge --;
+  this.charge--;
   console.log(
     `${this.make} going at ${this.speed} km/h, with a charge of ${this.charge}%`
   );
@@ -101,5 +100,52 @@ console.log(tesla);
 // Methods
 // tesla.chargeBattery();
 tesla.accelerate();
-tesla.brake()
-tesla.chargeBattery(90)
+tesla.brake();
+tesla.chargeBattery(90);
+
+class EVCl extends CarCl {
+  #charge;
+  constructor(charge, make, speed) {
+    super(make, speed);
+    this.#charge = charge;
+
+    console.log(`Welcome to ${this.make} car charge is ${this.#charge}`);
+  }
+
+  // up para count of speed
+  accelerate(up) {
+    this.speed += up;
+    return this;
+  }
+  // down para count of brake
+  brake(down) {
+    console.log((this.speed -= down));
+    this.speed -= down;
+    this.#charge--
+    return this;
+  }
+  
+  
+  // Charge in %
+  chargeBattery(chargePre) {
+    this.#charge += chargePre;
+    return this;
+  }
+  
+  get carStatus() {
+    console.log(`Welcome to ${this.make} SUPER car charge is ${this.#charge} your speed now ${this.speed}KM/H`);
+  }
+
+  get chargeStatus() {
+    console.log('chargeStatus', this.#charge);
+    return this.#charge;
+  }
+}
+console.log(`****************   I AM HERE 👋 **********************`);
+const rivian = new EVCl(23, 'Rivian', 120);
+
+console.log(rivian);
+rivian.chargeStatus;
+rivian.accelerate(20).accelerate(20).accelerate(20).brake(5).chargeBattery(50).accelerate(20).carStatus;
+
+console.log(`****************   END HERE 👋 **********************`);
