@@ -2310,7 +2310,11 @@ var _regeneratorRuntime = require("regenerator-runtime");
 var _config = require("./config");
 var _helpers = require("./helpers");
 const state = {
-    recipe: {}
+    recipe: {},
+    search: {
+        query: "",
+        results: []
+    }
 };
 const loadedRecipe = async function(id) {
     try {
@@ -2333,16 +2337,22 @@ const loadedRecipe = async function(id) {
 };
 const loadSearchResults = async function(query) {
     try {
-        const data = await (0, _helpers.getJSON)(// `${API_URL}?search=pizza`
-        `${(0, _config.API_URL)}?search=${query}`);
-        const { recipes  } = data.data;
-        console.log(recipes);
+        state.search.query = query;
+        const data = await (0, _helpers.getJSON)(`${(0, _config.API_URL)}?search=${query}`);
+        state.search.results = data.data.recipes.map((rec)=>{
+            return {
+                id: rec.id,
+                title: rec.title,
+                publisher: rec.publisher,
+                image: rec.image_url
+            };
+        });
+        console.log(state.search.results);
     } catch (err) {
         console.log(`${e} 💥`);
         throw err;
     }
 };
-loadSearchResults("pizza");
 
 },{"regenerator-runtime":"dXNgZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./config":"k5Hzs","./helpers":"hGI1E"}],"k5Hzs":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
