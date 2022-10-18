@@ -2314,7 +2314,7 @@ const state = {
 };
 const loadedRecipe = async function(id) {
     try {
-        const data = await (0, _helpers.getJSON)(`${(0, _config.API_URL)}/${id}`);
+        const data = await (0, _helpers.getJSON)(`${(0, _config.API_URL)}${id}`);
         let { recipe  } = data.data;
         state.recipe = {
             id: recipe.id,
@@ -2327,17 +2327,29 @@ const loadedRecipe = async function(id) {
             ingredients: recipe.ingredients
         };
         console.log(state.recipe);
-    } catch (e) {
-        throw e;
+    } catch (e1) {
+        throw e1;
     }
 };
+const loadSearchResults = async function(query) {
+    try {
+        const data = await (0, _helpers.getJSON)(// `${API_URL}?search=pizza`
+        `${(0, _config.API_URL)}?search=${query}`);
+        const { recipes  } = data.data;
+        console.log(recipes);
+    } catch (err) {
+        console.log(`${e} 💥`);
+        throw err;
+    }
+};
+loadSearchResults("pizza");
 
 },{"regenerator-runtime":"dXNgZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./config":"k5Hzs","./helpers":"hGI1E"}],"k5Hzs":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "API_URL", ()=>API_URL);
 parcelHelpers.export(exports, "TIMEOUT_SEC", ()=>TIMEOUT_SEC);
-const API_URL = "https://forkify-api.herokuapp.com/api/v2/recipes";
+const API_URL = "https://forkify-api.herokuapp.com/api/v2/recipes/";
 const TIMEOUT_SEC = 10;
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hGI1E":[function(require,module,exports) {
