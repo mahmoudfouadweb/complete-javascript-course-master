@@ -26,4 +26,3 @@ export const loadedRecipe = async function (id) {
   }
 };
 
-// console.log(state);

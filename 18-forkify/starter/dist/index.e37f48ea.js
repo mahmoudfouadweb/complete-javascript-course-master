@@ -545,18 +545,21 @@ const controlRecipe = async function() {
         const id = window.location.hash;
         // if (!id) return;
         (0, _recipeViewJsDefault.default).renderSpinner();
-        // 1) loading recipe
+        // 1) LOAD RECIPE
         await _modelJs.loadedRecipe("5ed6604591c37cdc054bcac4");
-        // 2) Render recipe
+        // 2) RENDER RECIPE
         (0, _recipeViewJsDefault.default).render(_modelJs.state.recipe);
     } catch (err) {
+        // RENDER ERROR MESSAGE TO USER
         errorHandler();
     }
 };
+// APP FIRST STARTUP
 const init = function() {
     (0, _recipeViewJsDefault.default).addHandlerRender(controlRecipe);
 };
 init();
+// USER'S ERROR MESSAGE
 const errorHandler = function(err) {
     (0, _recipeViewJsDefault.default).renderError(err);
 };
@@ -2327,7 +2330,7 @@ const loadedRecipe = async function(id) {
     } catch (e) {
         throw e;
     }
-}; // console.log(state);
+};
 
 },{"regenerator-runtime":"dXNgZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./config":"k5Hzs","./helpers":"hGI1E"}],"k5Hzs":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");

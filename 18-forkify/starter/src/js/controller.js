@@ -12,21 +12,25 @@ const controlRecipe = async function () {
     const id = window.location.hash;
     // if (!id) return;
     recipeView.renderSpinner();
-    // 1) loading recipe
+
+    // 1) LOAD RECIPE
     await model.loadedRecipe('5ed6604591c37cdc054bcac4');
 
-    // 2) Render recipe
+    // 2) RENDER RECIPE
     recipeView.render(model.state.recipe);
   } catch (err) {
+    // RENDER ERROR MESSAGE TO USER
     errorHandler();
   }
 };
 
+// APP FIRST STARTUP
 const init = function () {
   recipeView.addHandlerRender(controlRecipe);
 };
 init();
 
+// USER'S ERROR MESSAGE
 const errorHandler = function (err) {
   recipeView.renderError(err);
 };
