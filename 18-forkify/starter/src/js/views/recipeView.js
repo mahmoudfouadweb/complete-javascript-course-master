@@ -1,11 +1,36 @@
+import icon from '../../img/icons.svg';
+import { Fraction } from 'fractional';
 class RecipeView {
   #parentElement = document.querySelector('.recipe');
   #data;
 
+  //////////////////////////
   render(data) {
-    this.data = data;
+    this.#data = data;
+    const markup = this.#generateMarkup();
+    this.#clear();
+    this.#parentElement.insertAdjacentHTML('afterbegin', markup);
   }
 
+  //////////////////////////
+  #clear() {
+    this.#parentElement.innerHTML = '';
+  }
+
+  //////////////////////////
+  renderSpinner = function () {
+    const markup = `
+         <div class="spinner">
+            <svg>
+              <use href="${icon}#icon-loader"></use>
+            </svg>
+          </div>
+    `;
+    this.#parentElement.innerHTML = '';
+    this.#parentElement.insertAdjacentHTML('afterbegin', markup);
+  };
+
+  //////////////////////////
   #generateMarkup() {
     return `
   <figure class="recipe__fig">
@@ -66,22 +91,7 @@ class RecipeView {
     <h2 class="heading--2">Recipe ingredients</h2>
     <ul class="recipe__ingredient-list">
  
-  ${this.#data.ingredients
-    .map(ing => {
-      return `
-    <li class="recipe__ingredient">
-    <svg class="recipe__icon">
-      <use href="${icon}#icon-check"></use>
-    </svg>
-    <div class="recipe__quantity">${ing.quantity ?? ''}</div>
-    <div class="recipe__description">
-      <span class="recipe__unit">${ing.unit ?? ''}</span>
-      ${ing.description}
-    </div>
-    </li>
-    `;
-    })
-    .join('')}
+  ${this.#data.ingredients.map(this.#generateMarkupIngredient).join('')}
     </ul>
   </div>
 
@@ -106,9 +116,22 @@ class RecipeView {
     </a>
   </div>
   `;
-
-    recipeContainer.innerHTML = '';
-    recipeContainer.insertAdjacentHTML('afterbegin', markup);
+  }
+  #generateMarkupIngredient(ing) {
+    return `
+  <li class="recipe__ingredient">
+  <svg class="recipe__icon">
+    <use href="${icon}#icon-check"></use>
+  </svg>
+  <div class="recipe__quantity">${
+    ing.quantity ? new Fraction(ing.quantity).toString() : ''
+  }</div>
+  <div class="recipe__description">
+    <span class="recipe__unit">${ing.unit}span>
+    ${ing.description}
+  </div>
+  </li>
+  `;
   }
 }
 
